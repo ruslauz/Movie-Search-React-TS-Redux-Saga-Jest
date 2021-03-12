@@ -1,0 +1,1 @@
+export { PageTemp } from './PageTemp';

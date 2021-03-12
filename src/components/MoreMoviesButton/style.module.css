@@ -1,0 +1,19 @@
+.home {
+  padding: 10px;
+  border: 1px solid #80ced6;
+  background-color: #80ced6;
+  line-height: 18px;
+  border-radius: 5px;
+  max-width: 180px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+  margin: auto;
+}
+
+.home:hover {
+  background-color: #618685;
+  transition: .5s;
+}

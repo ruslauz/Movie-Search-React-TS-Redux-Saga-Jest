@@ -1,0 +1,19 @@
+.label  {
+  display: flex;
+  align-items: center;
+  margin: 0 10px 15px;
+  white-space: nowrap;
+} 
+
+.select {
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #80ced6;
+  border-radius: 5px;
+  line-height: 18px;
+}
+
+.labelText  {
+  margin-right: 10px;
+  font-weight: bold;
+}

@@ -1,0 +1,76 @@
+.content {
+  display: flex;
+  flex-direction: column;
+} 
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+} 
+
+.information {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: flex-start;
+} 
+
+.imageWrapper {
+  flex-shrink: 1;
+  margin-right: 20px;
+  max-width: 400px;
+  flex-grow: 1;
+  min-width: 287px;
+  margin-bottom: 20px;
+  border: 1px solid #80ced6;
+  border-radius: 10px;
+  overflow: hidden;
+} 
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description {
+  /* display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 400px;
+  max-width: 600px; */
+  display: grid;
+  max-width: 600px;
+  grid-template-columns: repeat(auto-fill, minmax(238px, 1fr));
+  grid-gap: 10px 20px;
+  width: 100%;
+} 
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item:not(:last-child) {
+  /* margin-bottom: 10px; */
+}
+
+.name {
+  margin-right: 20px;
+  font-weight: bold;
+} 
+
+.value {
+  text-align: right;
+  font-style: italic;
+}
+
+@media(max-width: 768px) {
+  .imageWrapper {
+    margin-right: 0;
+  }
+}
