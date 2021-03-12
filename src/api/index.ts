@@ -1,7 +1,7 @@
 import { ApiType } from '../types';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const BASE_URL = `http://www.omdbapi.com/?apikey=${API_KEY}&`
+const BASE_URL = `https://cors-anywhere.herokuapp.com/http://www.omdbapi.com/?apikey=${API_KEY}&`
 
 export const getMovies: ApiType = async (query) => {
   try {
