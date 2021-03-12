@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Movie-Search-React-TS-Redux-Saga-Jest/static/css/main.ecacdb42.chunk.css",
-    "main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/main.7443815d.chunk.js",
+    "main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/main.ad23848f.chunk.js",
     "runtime-main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/runtime-main.28d6e5c4.js",
     "static/js/2.d9a77a01.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/2.d9a77a01.chunk.js",
     "static/js/3.db3cce0d.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/3.db3cce0d.chunk.js",
@@ -12,6 +12,6 @@
     "static/js/runtime-main.28d6e5c4.js",
     "static/js/2.d9a77a01.chunk.js",
     "static/css/main.ecacdb42.chunk.css",
-    "static/js/main.7443815d.chunk.js"
+    "static/js/main.ad23848f.chunk.js"
   ]
 }
