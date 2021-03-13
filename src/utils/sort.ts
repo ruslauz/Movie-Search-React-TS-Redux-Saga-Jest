@@ -9,8 +9,8 @@ export const DEFAULT = '';
 
 
 export const sortingVariants = {
-  [YEAR_ASC]: (a: MoviesResponse, b: MoviesResponse) => (+a.Year - +b.Year),
-  [YEAR_DESC]: (a: MoviesResponse, b: MoviesResponse) => (+b.Year - +a.Year),
-  [NAME_ASC]: (a: MoviesResponse, b: MoviesResponse) => (a.Title > b.Title ? 1 : -1),
-  [NAME_DESC]: (a: MoviesResponse, b: MoviesResponse) => (a.Title < b.Title ? 1 : -1),
+  [YEAR_ASC]: (a: MoviesResponse, b: MoviesResponse) => (parseInt(a.Year) - parseInt(b.Year)),
+  [YEAR_DESC]: (a: MoviesResponse, b: MoviesResponse) => (parseInt(b.Year) - parseInt(a.Year)),
+  [NAME_ASC]: (a: MoviesResponse, b: MoviesResponse) => (a.Title.localeCompare(b.Title)),
+  [NAME_DESC]: (a: MoviesResponse, b: MoviesResponse) => (a.Title.localeCompare(a.Title)),
 }

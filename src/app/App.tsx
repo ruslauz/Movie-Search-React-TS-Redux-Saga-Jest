@@ -36,7 +36,7 @@ export const App: FC = () =>
     <>
       <div className={style.app}>
         <header className={style.header}>
-          <NavLink to='/' className={style.link}>Movie Searching <i className="fas fa-video"></i></NavLink>
+          <NavLink to='/' className={style.link}><i className="fas fa-video"></i> Movie Searching</NavLink>
           <Search />
           {
             hasMovies && location.pathname === '/' && <SortSelector />
