@@ -27,7 +27,7 @@ const fetchMoviesWorker = function*(action: ReturnType<typeof sendRequest>) {
   yield put(setIsFetchingMovies(true));
   yield put(setNoResults(false));
   yield put(setTotalPages(0));
-  yield put(setCurrentPage(0));
+  yield put(setCurrentPage(1));
   yield put(setSort(DEFAULT));
   try {    
     const data: SuccessResponse = yield call<ApiType>(getMovies, action.payload);
