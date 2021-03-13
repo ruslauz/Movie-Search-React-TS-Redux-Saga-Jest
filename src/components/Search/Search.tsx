@@ -35,7 +35,7 @@ export const Search: FC<SearchType> = () =>
 
   return (
     <form className={style.search} onSubmit={onSubmit}>
-      <input type='text'
+      <input type='search'
         className={style.input}
         placeholder='Search'
         onChange={onChange}

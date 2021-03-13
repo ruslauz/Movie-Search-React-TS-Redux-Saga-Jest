@@ -8,10 +8,10 @@ export const NotFound: FC = () =>
 {
   return (
     <>
-      <h1 className={style.title}>Something went wrong. Page&nbsp;not&nbsp;found <i className="far fa-frown"/></h1>
+      <h1 className={style.title}>Something went wrong. Page&nbsp;not&nbsp;found&nbsp;<i className="far fa-frown" /></h1>
       <div className={style.imageWrapper}>
         <img src="https://ctoetotakoe.ru/wp-content/uploads/2016/05/404-not-found.png"
-        alt="404" className={style.image} />
+          alt="404" className={style.image} />
         <HomeButton />
       </div>
     </>
