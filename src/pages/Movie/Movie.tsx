@@ -3,30 +3,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 
 import { HomeButton } from '../../components/HomeButton';
+
 import { requestMovie, setRedirected } from '../../redux/actions/movie-actions';
+
 import { OneMovieResponse, StoreType } from '../../types';
 
 import style from './style.module.css';
+import { NO_IMAGE_URL } from '../../components/Cards/Cards';
 
 export const Movie: FC = () =>
 {
   const dispatch = useDispatch();
   const movieData = useSelector<StoreType, Partial<OneMovieResponse>>(store => store.movie.movieData);
   const isRequesting = useSelector<StoreType, boolean>(store => store.movie.isRequesting);
-  const isRedirected = useSelector<StoreType, boolean>(store => store.movie.isRedirected);
   const { id } = useParams<{ id: string }>();
   const history = useHistory();
 
-
-  useEffect(() => {
+  useEffect(() =>
+  {
     dispatch(requestMovie({ id, history }));
     return () => void dispatch(setRedirected(true));
-  }, [id, history, dispatch, isRedirected])
+  }, [id, history, dispatch])
 
   return (
     <>
       {
-        isRequesting && <h2 className={style.title}>Data is Loading...</h2>
+        isRequesting && <h2 className={style.title}>Data is Loading...<i className="fas fa-cog fa-spin" /></h2>
       }
       {
         !isRequesting && (
@@ -36,7 +38,7 @@ export const Movie: FC = () =>
             </h2>
             <div className={style.information}>
               <div className={style.imageWrapper}>
-                <img src={movieData.Poster === 'N/A' ? 'http://fpae.pt/backup/20181025/wp/wp-content/plugins/post-slider-carousel/images/no-image-available-grid.jpg' : movieData.Poster} alt={movieData.Title} className={style.poster} />
+                <img src={movieData.Poster === 'N/A' ? NO_IMAGE_URL : movieData.Poster} alt={movieData.Title} className={style.poster} />
               </div>
               <div className={style.description}>
                 <div className={style.item}>

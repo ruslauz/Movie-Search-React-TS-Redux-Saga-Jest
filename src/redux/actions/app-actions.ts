@@ -50,17 +50,17 @@ export const setQuery: Action<string> = query => ({
   payload: query,
 });
 
-export const setSearchInput: Action<string> = value => ({
+export const setSearchInput: ActionWithPayload<string> = value => ({
   type: SET_SEARCH_INPUT,
   payload: value,
 });
 
-export const setCurrentPage: Action<number> = page => ({
+export const setCurrentPage: ActionWithPayload<number> = page => ({
   type: SET_CURRENT_PAGE,
   payload: page,
 });
 
-export const setTotalPages: Action<number> = pages => ({
+export const setTotalPages: ActionWithPayload<number> = pages => ({
   type: SET_TOTAL_PAGES,
   payload: pages,
 });
@@ -75,17 +75,17 @@ export const requestMoreMovies: ActionWithPayload<[string, number]> = values => 
   payload: values,
 });
 
-export const addMoreMovies: Action<Array<MoviesResponse>> = movies => ({
+export const addMoreMovies: ActionWithPayload<Array<MoviesResponse>> = movies => ({
   type: ADD_MORE_MOVIES,
   payload: movies,
 });
 
-export const setErrorFetchingMoreMovies: Action<boolean> = boolean => ({
+export const setErrorFetchingMoreMovies: ActionWithPayload<boolean> = boolean => ({
   type: SET_ERROR_FETCHING_MORE_MOVIES,
   payload: boolean
 });
 
-export const setSort: Action<string> = sort => ({
+export const setSort: ActionWithPayload<string> = sort => ({
   type: SET_SORT,
   payload: sort,
 })

@@ -21,7 +21,7 @@ const initialState: MovieStore = {
   isRedirected: false,
 };
 
-export const movieReducer: ReducerType = (state: MovieStore = initialState, action): MovieStore => {
+export const movieReducer: ReducerType = (state = initialState, action) => {
   switch (action.type) {
     case SET_IS_REQUESTING:
       return {...state, isRequesting: action.payload};

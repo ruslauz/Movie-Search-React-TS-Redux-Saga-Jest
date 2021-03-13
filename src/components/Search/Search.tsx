@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent } from 'react';
+import { ChangeEventHandler, FC, FormEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
@@ -20,12 +20,12 @@ export const Search: FC<SearchType> = () =>
   const searchInput = useSelector<StoreType, string>((state) => state.app.searchInput);
   const history = useHistory();
   
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onChange: ChangeEventHandler<HTMLInputElement> = e =>
   {
     const value = e.target.value.trimStart();
     dispatch(setSearchInput(value))
   }
-  const onSubmit = (e: FormEvent<HTMLFormElement>) =>
+  const onSubmit: FormEventHandler<HTMLFormElement> = e =>
   {
     e.preventDefault();
     if (searchInput.length) {

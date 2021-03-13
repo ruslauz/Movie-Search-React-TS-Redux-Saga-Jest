@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 import { MovieStore } from './../redux/reducers/movie-reducer';
 import { AppStore } from './../redux/reducers/app-reducer';
 import { YEAR_ASC, YEAR_DESC, NAME_ASC, NAME_DESC, DEFAULT } from './../utils/sort';
@@ -6,6 +8,9 @@ import { YEAR_ASC, YEAR_DESC, NAME_ASC, NAME_DESC, DEFAULT } from './../utils/so
 
 export type Action<T> = (value?: T) => {type: string, payload?: T}
 export type ActionWithPayload<T> = (value: T) => {type: string, payload: T}
+
+// export type Action<T, P> = (value?: T) => {type: P, payload?: T}
+// export type ActionWithPayload<T, P> = (value: T) => {type: P, payload: T}
 
 /* Api */
 
@@ -59,9 +64,15 @@ export type SortType = typeof YEAR_ASC
 | typeof NAME_DESC 
 | typeof DEFAULT;
 
+// export type SortFunction = (a: MoviesResponse, b: MoviesResponse) => number
+
 /* Store */
 
 export type StoreType = {
   app: AppStore
   movie: MovieStore
 }
+
+/* History */
+
+export type HistoryType = ReturnType<typeof useHistory>

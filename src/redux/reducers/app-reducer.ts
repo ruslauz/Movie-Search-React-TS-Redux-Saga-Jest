@@ -46,7 +46,7 @@ const initialState: AppStore = {
   totalPages: 0,
 };
 
-export const appReducer: ReducerType = (state: AppStore = initialState, action): AppStore => {
+export const appReducer: ReducerType = (state = initialState, action) => {
   switch (action.type) {
     case SET_IF_FETCHING_MOVIES:
       return {...state, isFetchingMovies: action.payload};

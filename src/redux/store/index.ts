@@ -3,10 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSaga from 'redux-saga';
 
 import { rootReducer } from '../reducers';
-import { sagaWatcher } from './../sagas';
+import { rootSaga } from './../sagas';
 
 const saga = createSaga();
 
-export const store = createStore<any, any, any, any>(rootReducer, undefined, composeWithDevTools(applyMiddleware(saga)))
+export const store = createStore(rootReducer, undefined, composeWithDevTools(applyMiddleware(saga)))
 
-saga.run(sagaWatcher)
+saga.run(rootSaga);

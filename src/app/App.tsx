@@ -18,7 +18,7 @@ export const App: FC = () =>
   const dispatch = useDispatch();
   const location = useLocation();
   const query = useSelector<StoreType, string>(store => store.app.query);
-  const searchQuery = parse(location.search, true).query.search
+  const searchQuery = parse(location.search, true).query.search || '';
 
   useEffect(() =>
   {
@@ -36,7 +36,7 @@ export const App: FC = () =>
     <>
       <div className={style.app}>
         <header className={style.header}>
-          <NavLink to='/' className={style.link}>Movie Searching</NavLink>
+          <NavLink to='/' className={style.link}>Movie Searching <i className="fas fa-video"></i></NavLink>
           <Search />
           {
             hasMovies && location.pathname === '/' && <SortSelector />
