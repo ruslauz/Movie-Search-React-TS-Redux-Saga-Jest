@@ -1,28 +1,27 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import style from './style.module.css';
-
 import Card from '../Card/Card';
-
-import { MoviesResponse, SortType } from '../../types'
-import { Store } from '../../redux/reducers';
 import { MoreMoviesButton } from '../MoreMoviesButton';
 
+import { MoviesResponse, SortType, StoreType } from '../../types'
 import { sortingVariants } from '../../utils/sort';
+
+import style from './style.module.css';
 
 const NO_IMAGE_URL = 'http://fpae.pt/backup/20181025/wp/wp-content/plugins/post-slider-carousel/images/no-image-available-grid.jpg'
 
 export const Cards: FC = () =>
 {
-  const movies = useSelector<Store, Array<MoviesResponse>>(store => store.movies);
-  const sort = useSelector<Store, SortType>(store => store.sort)
-  const isFetchingMovies = useSelector<Store, boolean>(store => store.isFetchingMovies);
-  const isFetchingMoreMovies = useSelector<Store, boolean>(store => store.isFetchingMoreMovies)
-  const noResults = useSelector<Store, boolean>(store => store.noResults);
-  const currentPage = useSelector<Store, number>(store => store.currentPage);
-  const totalPages = useSelector<Store, number>(store => store.totalPages);
+  const movies = useSelector<StoreType, Array<MoviesResponse>>(store => store.app.movies);
+  const sort = useSelector<StoreType, SortType>(store => store.app.sort)
+  const isFetchingMovies = useSelector<StoreType, boolean>(store => store.app.isFetchingMovies);
+  const isFetchingMoreMovies = useSelector<StoreType, boolean>(store => store.app.isFetchingMoreMovies)
+  const noResults = useSelector<StoreType, boolean>(store => store.app.noResults);
+  const currentPage = useSelector<StoreType, number>(store => store.app.currentPage);
+  const totalPages = useSelector<StoreType, number>(store => store.app.totalPages);
   const sortedMovies = sort ? [...movies].sort(sortingVariants[sort]) : movies;
+
   return (
     <>
       { noResults &&

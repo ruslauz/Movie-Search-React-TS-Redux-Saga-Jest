@@ -1,5 +1,6 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { setSort } from '../../redux/actions';
 
 import { NAME_ASC, NAME_DESC, YEAR_ASC, YEAR_DESC, DEFAULT } from '../../utils/sort';
@@ -7,14 +8,15 @@ import { NAME_ASC, NAME_DESC, YEAR_ASC, YEAR_DESC, DEFAULT } from '../../utils/s
 import style from './style.module.css';
 
 
-export const SortSelector = () =>
+export const SortSelector: FC = () =>
 {
   const dispatch = useDispatch();
-  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) =>
+  {
     console.log(e.target.value);
     dispatch(setSort(e.target.value));
   };
-  
+
   return (
     <>
       <label htmlFor="" className={style.label}>

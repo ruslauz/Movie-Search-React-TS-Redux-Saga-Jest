@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { setSearchInput } from '../../redux/actions';
-import { Store } from '../../redux/reducers';
+import { StoreType } from '../../types';
 
 import style from './style.module.css';
 
@@ -16,9 +16,10 @@ type SearchType = {
 export const Search: FC<SearchType> = () =>
 {
   const dispatch = useDispatch();
-  const isFetchingMovies = useSelector<Store, boolean>(store => store.isFetchingMovies)
+  const isFetchingMovies = useSelector<StoreType, boolean>(store => store.app.isFetchingMovies);
+  const searchInput = useSelector<StoreType, string>((state) => state.app.searchInput);
   const history = useHistory();
-  const searchInput = useSelector<Store, string>((state) => state.searchInput);
+  
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
   {
     const value = e.target.value.trimStart();

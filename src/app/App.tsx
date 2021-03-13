@@ -9,7 +9,7 @@ import { Main } from '../pages/Main';
 import { Movie } from '../pages/Movie';
 import { NotFound } from '../pages/NotFound';
 import { resetApp, sendRequest, setQuery, setSearchInput } from '../redux/actions';
-import { Store } from '../redux/reducers';
+import { StoreType } from '../types';
 
 import style from './style.module.css';
 
@@ -17,7 +17,7 @@ export const App: FC = () =>
 {
   const dispatch = useDispatch();
   const location = useLocation();
-  const query = useSelector<Store, string>(store => store.query);
+  const query = useSelector<StoreType, string>(store => store.app.query);
   const searchQuery = parse(location.search, true).query.search
 
   useEffect(() =>
@@ -31,7 +31,7 @@ export const App: FC = () =>
     }
   }, [searchQuery, query, dispatch, location.pathname])
 
-  const hasMovies = useSelector<Store, boolean>(store => Boolean(store.movies.length))
+  const hasMovies = useSelector<StoreType, boolean>(store => Boolean(store.app.movies.length))
   return (
     <>
       <div className={style.app}>

@@ -1,21 +1,24 @@
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Store } from '../../redux/reducers';
+
+import { StoreType } from '../../types';
 import style from './style.module.css';
 
 export const HomeButton: FC = () =>
 {
-  const query = useSelector<Store, string>(store => store.query);
+  const query = useSelector<StoreType, string>(store => store.app.query);
   const history = useHistory();
   const onHomeClick = () =>
   {
     if (query) {
-      history.goBack()
+      history.goBack();
     } else {
-      history.replace('/')
+      history.replace('/');
     }
   };
 
-  return <button className={style.home} onClick={onHomeClick}><i className="fas fa-home"></i></button>
+  return <button className={style.home} onClick={onHomeClick}>
+    <i className="fas fa-home"/>
+  </button>
 };

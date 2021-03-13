@@ -1,11 +1,14 @@
-import { REQUEST_MORE_MOVIES } from './../actions/index';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { v4 } from 'uuid';
 
-import { getMovies } from './../../api';
-import { SuccessResponse, ApiType } from './../../types';
+import { getMovies, getMovie } from '../../api';
+
+import { SuccessResponse, ApiType, OneMovieResponse, StoreType } from '../../types';
+
+import { setIsRequesting, requestMovie, REQUEST_MOVIE, saveMovieData, setRedirected } from './../actions/movie-actions';
 import { 
   SEND_REQUEST,
+  REQUEST_MORE_MOVIES,
   setIsFetchingMovies,
   saveMovies,
   setNoResults,
@@ -24,6 +27,7 @@ const RESULTS_PER_PAGE = 10;
 export const sagaWatcher = function*() {
   yield takeEvery(SEND_REQUEST, fetchMovies);
   yield takeEvery(REQUEST_MORE_MOVIES, fetchMoreMovies);
+  yield takeEvery(REQUEST_MOVIE, fetchOneMovie);
 }
 
 const fetchMovies = function*(action: ReturnType<typeof sendRequest>) {
@@ -67,5 +71,23 @@ const fetchMoreMovies = function*(action: ReturnType<typeof requestMoreMovies>) 
     console.log(error);
   } finally {
     yield put(setIsFetchingMoreMovies(false));
+  }
+}
+
+const fetchOneMovie = function*(action: ReturnType<typeof requestMovie>) {
+  yield put(setIsRequesting(true));
+  yield put(setRedirected(false));
+  try {    
+    const data: OneMovieResponse = yield call<ApiType>(getMovie, action.payload.id);
+    if (data.Response === 'True') {
+      yield put(saveMovieData(data));
+    } else {
+      action.payload.history.replace('/404');
+    }
+  } catch (error) {
+    action.payload.history.replace('/404');;
+  } finally {
+    const isRedirected: boolean = yield select((state: StoreType) => state.movie.isRedirected);
+    if (!isRedirected) yield put(setIsRequesting(false));
   }
 }
