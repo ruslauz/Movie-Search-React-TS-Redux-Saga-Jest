@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Movie-Search-React-TS-Redux-Saga-Jest/static/css/main.ecacdb42.chunk.css",
-    "main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/main.33dc65a4.chunk.js",
-    "runtime-main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/runtime-main.28d6e5c4.js",
-    "static/js/2.d9a77a01.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/2.d9a77a01.chunk.js",
-    "static/js/3.db3cce0d.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/3.db3cce0d.chunk.js",
+    "main.css": "/Movie-Search-React-TS-Redux-Saga-Jest/static/css/main.298f2967.chunk.css",
+    "main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/main.b173a6d6.chunk.js",
+    "runtime-main.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/runtime-main.cc1c89ee.js",
+    "static/js/2.665ed629.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/2.665ed629.chunk.js",
+    "static/js/3.3d7ad5cd.chunk.js": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/3.3d7ad5cd.chunk.js",
     "index.html": "/Movie-Search-React-TS-Redux-Saga-Jest/index.html",
-    "static/js/2.d9a77a01.chunk.js.LICENSE.txt": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/2.d9a77a01.chunk.js.LICENSE.txt"
+    "static/js/2.665ed629.chunk.js.LICENSE.txt": "/Movie-Search-React-TS-Redux-Saga-Jest/static/js/2.665ed629.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.28d6e5c4.js",
-    "static/js/2.d9a77a01.chunk.js",
-    "static/css/main.ecacdb42.chunk.css",
-    "static/js/main.33dc65a4.chunk.js"
+    "static/js/runtime-main.cc1c89ee.js",
+    "static/js/2.665ed629.chunk.js",
+    "static/css/main.298f2967.chunk.css",
+    "static/js/main.b173a6d6.chunk.js"
   ]
 }
