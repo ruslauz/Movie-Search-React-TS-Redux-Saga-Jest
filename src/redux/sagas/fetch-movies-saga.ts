@@ -12,7 +12,10 @@ import {
   setNoResults,
   setErrorFetchingMovies,
   sendRequest,
-  setTotalPages, } from './../actions';
+  setTotalPages,
+  setCurrentPage,
+  setSort, } from './../actions';
+import { DEFAULT } from './../../utils/sort';
 
 const RESULTS_PER_PAGE = 10;
 
@@ -24,6 +27,8 @@ const fetchMoviesWorker = function*(action: ReturnType<typeof sendRequest>) {
   yield put(setIsFetchingMovies(true));
   yield put(setNoResults(false));
   yield put(setTotalPages(0));
+  yield put(setCurrentPage(0));
+  yield put(setSort(DEFAULT));
   try {    
     const data: SuccessResponse = yield call<ApiType>(getMovies, action.payload);
     if (data.Response === 'True') {
