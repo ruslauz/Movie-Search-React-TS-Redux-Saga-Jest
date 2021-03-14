@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router';
 
 import { HomeButton } from '../../components/HomeButton';
 
-import { requestMovie, setRedirected } from '../../redux/actions/movie-actions';
+import { requestMovie, resetMovie } from '../../redux/actions/movie-actions';
 
 import { OneMovieResponse, StoreType } from '../../types';
 
@@ -21,8 +21,10 @@ export const Movie: FC = () =>
 
   useEffect(() =>
   {
-    dispatch(requestMovie({ id, history }));
-    return () => void dispatch(setRedirected(true));
+    const qwe = dispatch(requestMovie({ id, history }));
+    console.log(qwe);
+    
+    return () => void dispatch(resetMovie());
   }, [id, history, dispatch])
 
   return (

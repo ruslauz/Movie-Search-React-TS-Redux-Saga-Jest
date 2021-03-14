@@ -1,9 +1,9 @@
-import { OneMovieResponse, ActionWithPayload, HistoryType } from '../../types';
+import { OneMovieResponse, ActionWithPayload, HistoryType, Action } from '../../types';
 
 export const SET_IS_REQUESTING = 'MOVIE/SET_IS_REQUESTING';
 export const REQUEST_MOVIE = 'MOVIE/REQUEST_MOVIE';
 export const SAVE_MOVIE_DATA = 'MOVIE/SAVE_MOVIE_DATA';
-export const SET_REDIRECTED = 'MOVIE/SET_REDIRECTED';
+export const RESET_MOVIE = 'MOVIE/RESET_MOVIE';
 
 export const setIsRequesting: ActionWithPayload<boolean> = boolean => ({
   type: SET_IS_REQUESTING,
@@ -20,7 +20,6 @@ export const saveMovieData: ActionWithPayload<OneMovieResponse> = data => ({
   payload: data,
 });
 
-export const setRedirected: ActionWithPayload<boolean> = boolean => ({
-  type: SET_REDIRECTED,
-  payload: boolean
+export const resetMovie: Action<undefined> = () => ({
+  type: RESET_MOVIE,
 });

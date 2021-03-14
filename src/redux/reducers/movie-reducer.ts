@@ -5,7 +5,7 @@ import { Action, OneMovieResponse } from '../../types';
 import {
   SET_IS_REQUESTING, 
   SAVE_MOVIE_DATA, 
-  SET_REDIRECTED, } from '../actions/movie-actions'
+  RESET_MOVIE, } from '../actions/movie-actions'
 
 export type MovieStore = {
   isRequesting: boolean
@@ -27,8 +27,8 @@ export const movieReducer: ReducerType = (state = initialState, action) => {
       return {...state, isRequesting: action.payload};
     case SAVE_MOVIE_DATA:
       return {...state, movieData: action.payload};
-    case SET_REDIRECTED:
-      return {...state, isRedirected: action.payload};
+    case RESET_MOVIE:
+      return {...state, ...initialState};
     default:
       return state;
   }

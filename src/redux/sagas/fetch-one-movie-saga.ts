@@ -1,29 +1,32 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { Task } from '@redux-saga/types';
+import { call, put, cancel, fork, take } from 'redux-saga/effects';
 
 import { getMovie } from '../../api';
 
-import { ApiType, OneMovieResponse, StoreType } from '../../types';
+import { ApiType, OneMovieResponse } from '../../types';
 
-import { setIsRequesting, requestMovie, REQUEST_MOVIE, saveMovieData, setRedirected } from './../actions/movie-actions';
+import { setIsRequesting, requestMovie, REQUEST_MOVIE, saveMovieData, RESET_MOVIE } from './../actions/movie-actions';
 
 export const fetchOneMovieWatcher = function*() {
-  yield takeEvery(REQUEST_MOVIE, fetchOneMovieWorker); // Takes every request
+  while (true) {
+    const action: ReturnType<typeof requestMovie> = yield take(REQUEST_MOVIE); // Takes every request  
+    const task: Task = yield fork(fetchOneMovieWorker, action);
+    yield take(RESET_MOVIE);
+    yield cancel(task);
+  }
 }
 
 const fetchOneMovieWorker = function*(action: ReturnType<typeof requestMovie>) {
   yield put(setIsRequesting(true));
-  yield put(setRedirected(false));
   try {    
     const data: OneMovieResponse = yield call<ApiType>(getMovie, action.payload.id);
     if (data.Response === 'True') {
       yield put(saveMovieData(data));
+      yield put(setIsRequesting(false));
     } else {
-      action.payload.history.replace('/404');
+      yield action.payload.history.replace('/404');
     }
   } catch (error) {
-    action.payload.history.replace('/404');;
-  } finally {
-    const isRedirected: boolean = yield select((state: StoreType) => state.movie.isRedirected);
-    if (!isRedirected) yield put(setIsRequesting(false));
+    yield action.payload.history.replace('/404');
   }
-}
+};
