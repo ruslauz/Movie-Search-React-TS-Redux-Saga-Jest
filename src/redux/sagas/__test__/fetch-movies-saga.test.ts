@@ -1,13 +1,25 @@
-import { RESULTS_PER_PAGE } from './../fetch-movies-saga';
-import { GetMoviesType, MoviesResponseWithId, SuccessResponse } from './../../../types/index';
-import { getMovies } from './../../../api/index';
-import { DEFAULT } from './../../../utils/sort';
-import { setNoResults, setIsFetchingMovies, setTotalPages, setCurrentPage, setSort, saveMovies, setErrorFetchingMovies } from './../../actions/app-actions';
-import { put } from 'redux-saga/effects';
-import { fetchMoviesWorker, fetchMoviesWatcher } from '../fetch-movies-saga';
+import { call, takeLatest, put } from '@redux-saga/core/effects';
 
-import { sendRequest, SEND_REQUEST } from '../../actions/app-actions';
-import { call, takeLatest } from '@redux-saga/core/effects';
+import { fetchMoviesWorker, fetchMoviesWatcher } from '../fetch-movies-saga';
+import { RESULTS_PER_PAGE } from './../fetch-movies-saga';
+
+import { getMovies } from './../../../api/index';
+
+import { GetMoviesType, MoviesResponseWithId, SuccessResponse } from '../../../types/';
+
+import { DEFAULT } from './../../../utils/sort';
+
+import {
+  sendRequest,
+  SEND_REQUEST,
+  setNoResults,
+  setIsFetchingMovies,
+  setTotalPages,
+  setCurrentPage,
+  setSort,
+  saveMovies,
+  setErrorFetchingMovies } from '../../actions/app-actions';
+
 import { failedData, successData } from './mock-data';
 
 describe('Testing FetchMoviesWatcher', () => {
@@ -115,17 +127,17 @@ describe('Testing FetchMoviesWorker',  () => {
 
       test('1. should dispatch saveMovies with empty Array', () => {
         data = failedData;
-        expectedValue = put(saveMovies([]))
+        expectedValue = put(saveMovies([]));
         expect(generator.next(data).value).toEqual(expectedValue);
       });
 
       test('2. should dispatch setNoResults with true', () => {
-        expectedValue = put(setNoResults(true))
+        expectedValue = put(setNoResults(true));
         expect(generator.next().value).toEqual(expectedValue);
       });
 
       test('3. should dispatch setIsFetchingMovies with false', () => {
-        expectedValue = put(setIsFetchingMovies(false))
+        expectedValue = put(setIsFetchingMovies(false));
         expect(generator.next().value).toEqual(expectedValue);
       });
 
@@ -144,10 +156,10 @@ describe('Testing FetchMoviesWorker',  () => {
         generator.next();
         generator.next();
         generator.next();
-      })
+      });
 
       test('1. should dispatch setErrorFetchingMovies with empty true', () => {
-        const errorMessage = 'Some Error'
+        const errorMessage = 'Some Error';
         data = TypeError(errorMessage);
         expectedValue = put(setErrorFetchingMovies(true));
         expect(generator.throw(data).value).toEqual(expectedValue);
@@ -157,7 +169,6 @@ describe('Testing FetchMoviesWorker',  () => {
         expectedValue = put(setIsFetchingMovies(false));
         expect(generator.next().value).toEqual(expectedValue);
       });
-
-    })
-  })
-})
+    });
+  });
+});

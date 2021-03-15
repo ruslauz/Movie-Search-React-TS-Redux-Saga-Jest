@@ -1,13 +1,15 @@
-import { GetMoviesType, GetMovieType, HistoryType, MoviesResponseWithId, SuccessResponse } from './../../../types';
-import { setNoResults, setIsFetchingMovies, setTotalPages, setCurrentPage, setSort, saveMovies, setErrorFetchingMovies } from './../../actions/app-actions';
-import { put } from 'redux-saga/effects';
-
-import { call, cancel, fork, take, takeLatest } from '@redux-saga/core/effects';
-import { failedData, mockedHistory, oneMovieFailedData, oneMovieMockedData, successData } from './mock-data';
+import { put, call, cancel, fork, take } from '@redux-saga/core/effects';
 
 import { fetchOneMovieWatcher, fetchOneMovieWorker } from '../fetch-one-movie-saga';
+
 import { requestMovie, REQUEST_MOVIE, RESET_MOVIE, saveMovieData, setIsRequesting } from '../../actions/movie-actions';
+
 import { getMovie } from '../../../api';
+
+import { GetMovieType, HistoryType } from '../../../types';
+
+import { mockedHistory, oneMovieFailedData, oneMovieMockedData } from './mock-data';
+
 
 describe('Testing FetchMoviesWatcher', () => {
   
@@ -18,6 +20,7 @@ describe('Testing FetchMoviesWatcher', () => {
     type: REQUEST_MOVIE,
     payload: {id: 'tt3896198', history} 
   };
+  
   beforeAll(() => {
     generator = fetchOneMovieWatcher();
   });
@@ -88,7 +91,7 @@ describe('Testing FetchMoviesWorker', () => {
     test('5. should be done', () => {
       expect(generator.next().done).toBeTruthy();
     });
-  })
+  });
 
   describe('Flow with errors', () => {
     describe('Response === "False"', () => {
@@ -116,7 +119,7 @@ describe('Testing FetchMoviesWorker', () => {
 
       test('2. should to be done', () => {
         expect(generator.next()).toBeTruthy();
-      })
+      });
     });
 
     describe('Rejected request', () => {

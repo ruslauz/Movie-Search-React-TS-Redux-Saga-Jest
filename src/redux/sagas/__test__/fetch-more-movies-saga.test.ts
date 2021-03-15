@@ -1,16 +1,18 @@
+import { put, call, takeLeading } from 'redux-saga/effects';
+
 import { fetchMoreMoviesWorker, fetchMoreMoviesWatcher } from '../fetch-more-movies-saga';
-import { fetchOneMovieWorker } from '../fetch-one-movie-saga';
-
 import { RESULTS_PER_PAGE } from './../fetch-movies-saga';
-import { GetMoviesType, MoviesResponseWithId, SuccessResponse } from './../../../types/index';
-import { getMovies } from './../../../api/index';
-import { DEFAULT } from './../../../utils/sort';
-import { setNoResults, setIsFetchingMovies, setTotalPages, setCurrentPage, setSort, saveMovies, setErrorFetchingMovies, REQUEST_MORE_MOVIES, requestMoreMovies, setIsFetchingMoreMovies, addMoreMovies, setErrorFetchingMoreMovies } from './../../actions/app-actions';
-import { put } from 'redux-saga/effects';
 
-import { sendRequest, SEND_REQUEST } from '../../actions/app-actions';
-import { call, takeLatest, takeLeading } from '@redux-saga/core/effects';
-import { failedData, successData } from './mock-data';
+import { GetMoviesType, MoviesResponseWithId, SuccessResponse } from '../../../types/';
+import { getMovies } from './../../../api';
+import {
+  setCurrentPage,
+  REQUEST_MORE_MOVIES,
+  requestMoreMovies,
+  setIsFetchingMoreMovies,
+  addMoreMovies,
+  setErrorFetchingMoreMovies } from '../../actions/app-actions';
+import { successData } from './mock-data';
 
 describe('Testing FetchMoreMoviesWatcher', () => {
   
@@ -85,8 +87,6 @@ describe('Testing FetchMoreMoviesWorker',  () => {
   describe('Flow with error', () => {
 
     let expectedValue;
-    let data: SuccessResponse;
-    let dataWithId: Array<MoviesResponseWithId>;
     let initialPageNumber = 1
     const query = 'guardians';
     const payloadValue: [string, number] = [query, initialPageNumber + 1]
