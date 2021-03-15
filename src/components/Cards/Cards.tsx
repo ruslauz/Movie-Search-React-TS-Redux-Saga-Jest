@@ -8,7 +8,7 @@ import { sortingVariants } from '../../utils/sort';
 
 import style from './style.module.css';
 
-export const NO_IMAGE_URL = 'http://fpae.pt/backup/20181025/wp/wp-content/plugins/post-slider-carousel/images/no-image-available-grid.jpg'
+export const NO_IMAGE_URL = 'https://fpae.pt/backup/20181025/wp/wp-content/plugins/post-slider-carousel/images/no-image-available-grid.jpg'
 
 export const Cards: FC = () =>
 {
