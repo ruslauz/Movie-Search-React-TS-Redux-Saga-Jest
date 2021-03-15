@@ -21,9 +21,7 @@ export const Movie: FC = () =>
 
   useEffect(() =>
   {
-    const qwe = dispatch(requestMovie({ id, history }));
-    console.log(qwe);
-    
+    dispatch(requestMovie({ id, history }));
     return () => void dispatch(resetMovie());
   }, [id, history, dispatch])
 

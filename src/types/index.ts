@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { MovieStore } from './../redux/reducers/movie-reducer';
 import { AppStore } from './../redux/reducers/app-reducer';
 import { YEAR_ASC, YEAR_DESC, NAME_ASC, NAME_DESC, DEFAULT } from './../utils/sort';
+import { getMovie, getMovies } from '../api';
 
 /* Actions */
 
@@ -14,20 +15,35 @@ export type ActionWithPayload<T> = (value: T) => {type: string, payload: T}
 
 /* Api */
 
-export type ApiType = (query?: string) => Promise<SuccessResponse | never>;
+export type ApiType = (query?: string) => Promise<ResponseType>;
+export type ResponseType = SuccessResponse | FailedResponse | never
 export type SuccessResponse = {
-  Response: string
+  Response: 'True'
   Search: Array<MoviesResponse>
   totalResults: string
 };
+
+export type FailedResponse = {
+  Response: 'False'
+  Error: 'Movie not found!'
+};
+
+export type GetMoviesResponse = ReturnType<typeof getMovies>;
+export type GetMovieResponse = ReturnType<typeof getMovie>;
+
+export type GetMoviesType = (query: string) => GetMoviesResponse;
+export type GetMovieType = (query: string) => GetMovieResponse;
+
 export type MoviesResponse = {
-  id: string
   Poster: string
   Title: string
   Type: string
   Year: string
   imdbID: string
 };
+
+export type MoviesResponseWithId = MoviesResponse & {id: string}
+
 export type OneMovieResponse = {
   Title: string,
   Year: string,
@@ -43,7 +59,7 @@ export type OneMovieResponse = {
   Country: string,
   Awards: string,
   Poster: string,
-  Ratings: string,
+  Ratings: Array<{Source: string, Value: string}>,
   Metascore: string,
   imdbRating: string,
   imdbVotes: string,

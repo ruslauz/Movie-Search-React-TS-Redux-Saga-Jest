@@ -3,7 +3,7 @@ import { call, put, cancel, fork, take } from 'redux-saga/effects';
 
 import { getMovie } from '../../api';
 
-import { ApiType, OneMovieResponse } from '../../types';
+import { ApiType, GetMovieType, OneMovieResponse } from '../../types';
 
 import { setIsRequesting, requestMovie, REQUEST_MOVIE, saveMovieData, RESET_MOVIE } from './../actions/movie-actions';
 
@@ -16,10 +16,10 @@ export const fetchOneMovieWatcher = function*() {
   }
 }
 
-const fetchOneMovieWorker = function*(action: ReturnType<typeof requestMovie>) {
+export const fetchOneMovieWorker = function*(action: ReturnType<typeof requestMovie>) {
   yield put(setIsRequesting(true));
   try {    
-    const data: OneMovieResponse = yield call<ApiType>(getMovie, action.payload.id);
+    const data: OneMovieResponse = yield call<GetMovieType>(getMovie, action.payload.id);
     if (data.Response === 'True') {
       yield put(saveMovieData(data));
       yield put(setIsRequesting(false));

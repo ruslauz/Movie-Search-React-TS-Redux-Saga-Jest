@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Card from '../Card/Card';
 
-import { MoviesResponse, SortType, StoreType } from '../../types'
+import { MoviesResponseWithId, SortType, StoreType } from '../../types'
 import { sortingVariants } from '../../utils/sort';
 
 import style from './style.module.css';
@@ -12,7 +12,7 @@ export const NO_IMAGE_URL = 'http://fpae.pt/backup/20181025/wp/wp-content/plugin
 
 export const Cards: FC = () =>
 {
-  const movies = useSelector<StoreType, Array<MoviesResponse>>(store => store.app.movies);
+  const movies = useSelector<StoreType, Array<MoviesResponseWithId>>(store => store.app.movies);
   const sort = useSelector<StoreType, SortType>(store => store.app.sort)
   const isFetchingMovies = useSelector<StoreType, boolean>(store => store.app.isFetchingMovies);
   const sortedMovies = sort ? [...movies].sort(sortingVariants[sort]) : movies;

@@ -1,6 +1,6 @@
 import { Reducer } from 'react';
 
-import { SortType, MoviesResponse, Action } from '../../types';
+import { SortType, Action, MoviesResponseWithId } from '../../types';
 
 import { 
   SET_IF_FETCHING_MOVIES,
@@ -25,7 +25,7 @@ export type AppStore = {
   query: string
   searchInput: string
   sort: SortType
-  movies: Array<MoviesResponse>
+  movies: Array<MoviesResponseWithId>
   currentPage: number;
   totalPages: number;
 };

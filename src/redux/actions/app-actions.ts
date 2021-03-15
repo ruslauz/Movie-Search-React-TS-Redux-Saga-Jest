@@ -25,12 +25,12 @@ export const setIsFetchingMovies: Action<boolean> = boolean => ({
   payload: boolean,
 })
 
-export const sendRequest: Action<string> = query => ({
+export const sendRequest: ActionWithPayload<string> = query => ({
   type: SEND_REQUEST,
   payload: query,
 })
 
-export const saveMovies: Action<Array<MoviesResponse>> = movies => ({
+export const saveMovies: ActionWithPayload<Array<MoviesResponse> | []> = movies => ({
   type: SAVE_MOVIES,
   payload: movies,
 });
