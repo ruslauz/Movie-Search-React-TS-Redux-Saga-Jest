@@ -16,7 +16,7 @@ describe('Testing FetchMoviesWatcher', () => {
   let generator: Generator;
   let expectedValue;
   let history: HistoryType = mockedHistory;
-  let  action: ReturnType<typeof requestMovie> = { 
+  let action: ReturnType<typeof requestMovie> = { 
     type: REQUEST_MOVIE,
     payload: {id: 'tt3896198', history} 
   };
@@ -117,7 +117,7 @@ describe('Testing FetchMoviesWorker', () => {
         expect(history.replace).toBeCalledWith('/404');
       });
 
-      test('2. should to be done', () => {
+      test('2. should be done', () => {
         expect(generator.next()).toBeTruthy();
       });
     });
@@ -146,7 +146,7 @@ describe('Testing FetchMoviesWorker', () => {
         expect(history.replace).toBeCalledWith('/404');
       });
 
-      test('2. should to be done', () => {
+      test('2. should be done', () => {
         expect(generator.next()).toBeTruthy();
       })
     });

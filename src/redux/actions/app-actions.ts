@@ -3,7 +3,7 @@ import { Action, MoviesResponse, ActionWithPayload } from '../../types';
 export const SET_QUERY = 'APP/SET_QUERY';
 export const SET_SEARCH_INPUT = 'APP/SET_SEARCH_INPUT';
 export const SEND_REQUEST = 'APP/SEND_REQUEST';
-export const SET_IF_FETCHING_MOVIES = 'APP/SET_IF_FETCHING_MOVIES';
+export const SET_IS_FETCHING_MOVIES = 'APP/SET_IS_FETCHING_MOVIES';
 export const SAVE_MOVIES = 'APP/SAVE_MOVIES';
 export const SET_NO_RESULTS = 'APP/SET_NO_RESULTS';
 export const SET_ERROR_FETCHING_MOVIES = 'APP/SET_ERROR_FETCHING_MOVIES';
@@ -11,17 +11,17 @@ export const SET_ERROR_FETCHING_MOVIES = 'APP/SET_ERROR_FETCHING_MOVIES';
 export const SET_CURRENT_PAGE = 'APP/SET_CURRENT_PAGE';
 export const SET_TOTAL_PAGES = 'APP/SET_TOTAL_PAGES';
 
-export const SET_IF_FETCHING_MORE_MOVIES = 'APP/SET_IF_FETCHING_MORE_MOVIES';
+export const SET_IS_FETCHING_MORE_MOVIES = 'APP/SET_IF_FETCHING_MORE_MOVIES';
 export const REQUEST_MORE_MOVIES = 'APP/REQUEST_MORE_MOVIES';
 export const ADD_MORE_MOVIES = 'APP/ADD_MORE_MOVIES'
-export const SET_ERROR_FETCHING_MORE_MOVIES = 'APP/SET_ERROR_FETCHING_MOVIES';
+export const SET_ERROR_FETCHING_MORE_MOVIES = 'APP/SET_ERROR_FETCHING_MORE_MOVIES';
 
 export const SET_SORT = 'APP/SET_SORT';
 
 export const RESET_APP = 'APP/RESET_APP';
 
 export const setIsFetchingMovies: Action<boolean> = boolean => ({
-  type: SET_IF_FETCHING_MOVIES,
+  type: SET_IS_FETCHING_MOVIES,
   payload: boolean,
 })
 
@@ -66,7 +66,7 @@ export const setTotalPages: ActionWithPayload<number> = pages => ({
 });
 
 export const setIsFetchingMoreMovies: Action<boolean> = boolean => ({
-  type: SET_IF_FETCHING_MORE_MOVIES,
+  type: SET_IS_FETCHING_MORE_MOVIES,
   payload: boolean,
 })
 

@@ -3,17 +3,19 @@ import { Reducer } from 'react';
 import { SortType, Action, MoviesResponseWithId } from '../../types';
 
 import { 
-  SET_IF_FETCHING_MOVIES,
+  SET_IS_FETCHING_MOVIES,
   SET_NO_RESULTS,
   SET_CURRENT_PAGE,
   SET_TOTAL_PAGES,
   ADD_MORE_MOVIES,
-  SET_IF_FETCHING_MORE_MOVIES,
+  SET_IS_FETCHING_MORE_MOVIES,
   SET_SEARCH_INPUT,
   SET_SORT,
   RESET_APP,
   SET_QUERY,
-  SAVE_MOVIES, } from './../actions';
+  SAVE_MOVIES,
+  SET_ERROR_FETCHING_MOVIES,
+  SET_ERROR_FETCHING_MORE_MOVIES, } from './../actions';
 
 
 export type AppStore = {
@@ -32,7 +34,7 @@ export type AppStore = {
 
 export type ReducerType = Reducer<AppStore, ReturnType<Action<any>>>
 
-const initialState: AppStore = {
+export const initialState: AppStore = {
   isFetchingMovies: false,
   errorFetchingMovies: false,
   isFetchingMoreMovies: false,
@@ -48,12 +50,14 @@ const initialState: AppStore = {
 
 export const appReducer: ReducerType = (state = initialState, action) => {
   switch (action.type) {
-    case SET_IF_FETCHING_MOVIES:
+    case SET_IS_FETCHING_MOVIES:
       return {...state, isFetchingMovies: action.payload};
     case SAVE_MOVIES:
       return {...state, movies: action.payload};
     case SET_NO_RESULTS:
       return {...state, noResults: action.payload};
+    case SET_ERROR_FETCHING_MOVIES:
+      return {...state, errorFetchingMovies: action.payload};
     case SET_QUERY:
       return {...state, query: action.payload};
     case SET_SEARCH_INPUT:
@@ -62,10 +66,12 @@ export const appReducer: ReducerType = (state = initialState, action) => {
       return {...state, currentPage: action.payload};
     case SET_TOTAL_PAGES:
       return {...state, totalPages: action.payload};
-    case SET_IF_FETCHING_MORE_MOVIES:
+    case SET_IS_FETCHING_MORE_MOVIES:
       return {...state, isFetchingMoreMovies: action.payload};
     case ADD_MORE_MOVIES:
       return {...state, movies: [...state.movies, ...action.payload]};
+    case SET_ERROR_FETCHING_MORE_MOVIES:
+      return {...state, errorFetchingMoreMovies: action.payload};
     case SET_SORT:
       return {...state, sort: action.payload};
     case RESET_APP:
