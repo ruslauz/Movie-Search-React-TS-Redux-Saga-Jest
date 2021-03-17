@@ -6,8 +6,6 @@ export const NAME_ASC = 'NAME_ASC';
 export const NAME_DESC = 'NAME_DESC';
 export const DEFAULT = '';
 
-
-
 export const sortingVariants = {
   [YEAR_ASC]: (a: MoviesResponse, b: MoviesResponse) => (parseInt(a.Year) - parseInt(b.Year)),
   [YEAR_DESC]: (a: MoviesResponse, b: MoviesResponse) => (parseInt(b.Year) - parseInt(a.Year)),

@@ -1,13 +1,10 @@
 import { successData } from '../../redux/sagas/__test__/mock-data';
 import { sortingVariants, YEAR_ASC, YEAR_DESC, NAME_ASC, NAME_DESC } from '../sort';
 
-
 describe('Testing sort functions', () => {
   const unSortedData = successData.Search;
   const unSortedYears: Array<number> = unSortedData.map(item => parseInt(item.Year));
   const unSortedTitles: Array<string> = unSortedData.map(item => item.Title);
-  // const sortedAscYears: Array<number> = [...unSortedYears].sort((a, b) => a - b);
-  // const sortedDescYears: Array<number> = [...unSortedYears].sort((a, b) => b - a);
   const sortedAscTitles: Array<string> = [...unSortedTitles].sort((a, b) => a.localeCompare(b));
   const sortedDescTitles: Array<string> = [...unSortedTitles].sort((a, b) => b.localeCompare(a));
   const maxYear = Math.max(...unSortedYears);
